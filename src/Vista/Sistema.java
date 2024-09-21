@@ -24,7 +24,6 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,8 +31,6 @@ import javax.swing.table.JTableHeader;
 
 public final class Sistema extends javax.swing.JFrame {
 
-    Date fechaVenta = new Date();
-    String fechaActual = new SimpleDateFormat("dd/MM/yyyy").format(fechaVenta);
     Cliente cl = new Cliente();
     ClienteDao client = new ClienteDao();
     Proveedor pr = new Proveedor();
@@ -59,7 +56,6 @@ public final class Sistema extends javax.swing.JFrame {
     public Sistema(login priv) {
         initComponents();
         this.setLocationRelativeTo(null);
-        Midate.setDate(fechaVenta);
         txtIdCliente.setVisible(false);
         txtIdVenta.setVisible(false);
         txtIdPro.setVisible(false);
@@ -2468,7 +2464,7 @@ public final class Sistema extends javax.swing.JFrame {
         v.setCliente(cliente);
         v.setVendedor(vendedor);
         v.setTotal(monto);
-        v.setFecha(fechaActual);
+        v.setFecha(new SimpleDateFormat("dd/MM/yyyy").format(Midate.getDate()));
         Vdao.RegistrarVenta(v);
     }
 
